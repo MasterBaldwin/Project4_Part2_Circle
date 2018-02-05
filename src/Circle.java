@@ -1,20 +1,30 @@
-import java.util.Scanner;
+import javax.swing.*;
 
 public class Circle {
 public static void main(String[] args) {
-    Scanner inputStream = new Scanner(System.in);
-    int x, y;
-    boolean isInCircle = false;
+    JPanel panel = new JPanel();
+    JTextField xVar = new JTextField(5);
+    JTextField yVar = new JTextField(5);
+    int x, y, confirmCode;
+    boolean isInCircle;
 
-    x = 0;
-    y = 0;
 
-    System.out.print("Enter a point with two coordinates: ");
-    x = inputStream.nextInt();
-    y = inputStream.nextInt();
+    panel.add(new JLabel("x: "));
+    panel.add(xVar);
+    panel.add(Box.createHorizontalStrut(15));
+    panel.add(new JLabel("y: "));
+    panel.add(yVar);
 
-    isInCircle = Distance(x, y) < 10.0f;
-    System.out.println("Point (" + x + ", " + y + ") " + (isInCircle ? "is " : "is not ") + "in the circle.");
+    confirmCode = JOptionPane.showConfirmDialog(null, panel,
+            "Enter a point with two coordinates: ", JOptionPane.OK_CANCEL_OPTION);
+    if(confirmCode == JOptionPane.OK_OPTION)
+    {
+        x = Integer.parseInt(xVar.getText());
+        y = Integer.parseInt(yVar.getText());
+        isInCircle = Distance(x, y) < 10.0f;
+        JOptionPane.showMessageDialog(null, "Point (" + x + ", " + y + ") " +
+                (isInCircle ? "is " : "is not ") + "in the circle.");
+    }
 }
 
 private static float Distance(int x, int y)
