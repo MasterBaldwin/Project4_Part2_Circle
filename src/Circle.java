@@ -2,26 +2,22 @@ import javax.swing.*;
 
 public class Circle {
 // Written by: Mike Baldwin
-// Computes the average of a set of values entered by the user, e.g. with
-//     10.0 5.0 6.0 9.0 0.0
-// The average is 7.5
+// Determines if a 2-Dimensional point is within a circle of radius 10 centered at the origin
 
 public static void main(String[] args) {
-    JPanel panel = new JPanel();
-    JTextField xVar = new JTextField(5);
-    JTextField yVar = new JTextField(5);
+    JPanel panel;
+    JTextField xVar, yVar;
     int x, y, confirmCode;
     boolean isInCircle;
 
-
-    panel.add(new JLabel("x: "));
-    panel.add(xVar);
+    panel = new JPanel();
+    xVar = new JTextField(3); yVar = new JTextField(3);
+    panel.add(new JLabel("x: ")); panel.add(xVar);
     panel.add(Box.createHorizontalStrut(15));
-    panel.add(new JLabel("y: "));
-    panel.add(yVar);
+    panel.add(new JLabel("y: ")); panel.add(yVar);
 
     confirmCode = JOptionPane.showConfirmDialog(null, panel,
-            "Enter a point with two coordinates: ", JOptionPane.OK_CANCEL_OPTION);
+            "Enter a point with two coordinates", JOptionPane.OK_CANCEL_OPTION);
     if (confirmCode == JOptionPane.OK_OPTION) {
         x = Integer.parseInt(xVar.getText());
         y = Integer.parseInt(yVar.getText());
